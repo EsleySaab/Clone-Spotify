@@ -2,9 +2,10 @@ import logoSpotify from "../assets/logo/spotify-logo.png"
 
 export const Header = () => {
   return (
-    <div className="flex">
-      <img src={logoSpotify} alt="" />
-      <a href="#">
+    <div className="header">
+      <img src={logoSpotify} alt="Logo do Spotify" />
+
+      <a className="header__link" href="#">
         <h1>Spotify</h1>
       </a>
     </div>

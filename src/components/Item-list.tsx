@@ -1,29 +1,29 @@
+import { artistArray } from "../assets/database/artists"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCirclePlay } from "@fortawesome/free-solid-svg-icons"
-import { songsArray } from "../assets/database/songs"
-import ItemList from "./Item-list"
 
-export const Main = () => {
-  const songs = songsArray
-
+const ItemList = () => {
+  const artists = artistArray
   return (
-    <div className="main">
-      <ItemList />
-
+    <>
       <div className="item-list">
         <div className="item-list__header">
-          <h2>Músicas Populares</h2>
+          <h2>Artistas Populares</h2>
           <a className="item-list__link" href="#">
             Mostrar tudo
           </a>
         </div>
 
         <div className="item-list__container">
-          {songs.map((song) => (
+          {artists.slice(0, 7).map((artist) => (
             <div className="single-item">
               <div className="single-item__div-image-button">
                 <div className="single-item__div-image">
-                  <img className="single-item__image" src={song.image} alt="" />
+                  <img
+                    className="single-item__image"
+                    src={artist.image}
+                    alt=""
+                  />
                 </div>
 
                 <FontAwesomeIcon
@@ -33,7 +33,7 @@ export const Main = () => {
               </div>
               <div className="single-item__texts">
                 <div className="single-item__2lines">
-                  <p className="single-item__title">{song.name}</p>
+                  <p className="single-item__title">{artist.name}</p>
                   <p className="single-item__type">Artista</p>
                 </div>
               </div>
@@ -41,6 +41,8 @@ export const Main = () => {
           ))}
         </div>
       </div>
-    </div>
+    </>
   )
 }
+
+export default ItemList

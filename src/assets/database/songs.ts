@@ -1,4 +1,13 @@
-const songsArray = [
+export interface songsProps {
+  id: number
+  image: string
+  name: string
+  duration: string
+  artist: string
+  audio: string
+}
+
+export const songsArray: songsProps[] = [
   {
     image: "https://i.scdn.co/image/ab67616d00001e022774b00531d558bc19e12a24",
     name: "Última Saudade - Ao Vivo",
@@ -1719,4 +1728,4 @@ const songsArray = [
       "https://jornada-fullstack.s3.us-east-2.amazonaws.com/ima-de-problema.mp3",
     id: 200,
   },
-];
+]

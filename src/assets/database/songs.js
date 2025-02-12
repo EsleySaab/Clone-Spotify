@@ -1,13 +1,4 @@
-export interface songsProps {
-  id: number
-  image: string
-  name: string
-  duration: string
-  artist: string
-  audio: string
-}
-
-export const songsArray: songsProps[] = [
+export const songsArray = [
   {
     image: "https://i.scdn.co/image/ab67616d00001e022774b00531d558bc19e12a24",
     name: "Última Saudade - Ao Vivo",

@@ -1,18 +1,28 @@
 import { SingleItem } from "./Single-item"
+import { Link, useLocation } from "react-router-dom"
 
-export const ItemList = ({ title, items, itemsArray, path }) => {
+export const ItemList = ({ title, items, itemsArray, path, idPath }) => {
+  const { pathname } = useLocation()
+
+  const isHome = pathname === "/"
+  const finalItems = isHome ? items : Infinity
+
   return (
     <div className="item-list">
       <div className="item-list__header">
         <h2>{title}</h2>
-        <a href={path} className="item-list__link">
-          Mostrar tudo
-        </a>
+        {isHome ? (
+          <Link to={path} className="item-list__link">
+            Mostrar tudo
+          </Link>
+        ) : (
+          <></>
+        )}
       </div>
 
       <div className="item-list__container">
-        {itemsArray.slice(0, items).map((currObj) => (
-          <SingleItem {...currObj} key={currObj.id} />
+        {itemsArray.slice(0, finalItems).map((currObj) => (
+          <SingleItem {...currObj} key={currObj.id} idPath={idPath} />
         ))}
       </div>
     </div>

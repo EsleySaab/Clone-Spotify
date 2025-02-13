@@ -1,17 +1,24 @@
+import { useState } from "react"
 import { SongItem } from "./Song-item"
 
-export const SongList = () => {
+export const SongList = ({ songsArray }) => {
+  const [items, setItems] = useState(6)
+
+  function handleSeeMoreClick() {
+    setItems(10)
+  }
+
   return (
     <div className="song-list">
-      <SongItem />
-      <SongItem />
-      <SongItem />
-      <SongItem />
-      <SongItem />
-      <SongItem />
-      <SongItem />
+      {songsArray
+        .filter((currentValue, index) => index < items)
+        .map((currentSongObj, index) => (
+          <SongItem {...currentSongObj} index={index} key={index} />
+        ))}
 
-      <p className="song-list__see-more">Ver mais</p>
+      <p className="song-list__see-more" onClick={handleSeeMoreClick}>
+        Ver mais
+      </p>
     </div>
   )
 }

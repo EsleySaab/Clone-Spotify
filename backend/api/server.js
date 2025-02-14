@@ -9,7 +9,7 @@ const PORT = 3000
 
 app.use(cors())
 
-app.get("/", (request, response) => {
+app.get("/api", (request, response) => {
   response.send("Só vamos trabalhar com os endpoints '/artists' e '/songs'")
 })
 
@@ -31,10 +31,10 @@ app.get("/api/songs", async (request, response) => {
   }
 })
 
-app.use(express.static(path.join(__dirname, "../../frontend/dist")))
+app.use(express.static(path.join(__dirname, "../frontend/dist")))
 
-app.get("*", (request, response) => {
-  response.sendFile(path.join(__dirname, "../../frontend/dist/index.html"))
+app.get("*", async (request, response) => {
+  await response.sendFile(path.join(__dirname, "../frontend/dist/index.html"))
 })
 
 app.listen(PORT, () => {
